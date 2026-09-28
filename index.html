@@ -223,7 +223,7 @@ tbody td{padding:12px;vertical-align:middle;}
   <div class="controls">
     <div class="search-wrap">
       <span class="search-icon">&#128269;</span>
-      <input type="text" id="searchInput" placeholder="Search by chemical name or location" />
+      <input type="text" id="searchInput" placeholder="Search by chemical name, site, or location" />
     </div>
     <select class="filter-select" id="signalFilter">
       <option value="">All signal words</option>
@@ -465,7 +465,7 @@ tbody td{padding:12px;vertical-align:middle;}
     const q = el("searchInput").value.trim().toLowerCase();
     const sw = el("signalFilter").value;
     let rows = records.filter(r => {
-      const matchesQ = !q || r.name.toLowerCase().includes(q) || (r.location||"").toLowerCase().includes(q);
+      const matchesQ = !q || r.name.toLowerCase().includes(q) || (r.location||"").toLowerCase().includes(q) || (r.site||"").toLowerCase().includes(q);
       const matchesSw = !sw || r.signalWord === sw;
       const matchesSite = currentSite === "All" || r.site === currentSite;
       return matchesQ && matchesSw && matchesSite;
